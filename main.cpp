@@ -8,24 +8,35 @@
 #include "LiteVisitor.h"
 #include "LiteBaseVisitor.h"
 #include "SyntaxAction.h"
+#include "CustomVisitor.h"
 
 int main(int argc, char* argv[]){  
     //fetch inputs from command line
     std::ifstream stream;
-    stream.open("inputs/input1.txt");
+    stream.open("inputs/input2.txt");
 
     // SETUP 
     antlr4::ANTLRInputStream input(stream);
     LiteLexer lexer(&input);
     antlr4::CommonTokenStream tokens(&lexer);
     LiteParser parser(&tokens);
-    
-    //LiteParser::ProgContext* tree = parser.prog();  
-    SyntaxAction derrived;  // listener
 
-    antlr4::tree::ParseTree *walker = parser.prog();  //parse tree
-    antlr4::tree::ParseTreeWalker::DEFAULT.walk(&derrived, walker);
+    //LiteParser::ProgContext* tree = parser.prog();
+    //std::cout << tree->toStringTree(); 
+    //SyntaxAction derrived;  // listener
+    //antlr4::tree::ParseTree *tree = parser.prog();  //parse tree
 
+    CustomVisitor visitor;
+    visitor.visitProg(parser.prog());
+
+    /*
+    for(int i = 0; i < tree->children.size(); i++){
+        std::cout << tree->children[i]->toStringTree() << " | ";
+        std::cout << tree->children[i]->getText() << std::endl;
+    }
+    */
+
+    //antlr4::tree::ParseTreeWalker::DEFAULT.walk(&derrived, tree);
 
     return 0;
 }

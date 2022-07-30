@@ -1,0 +1,26 @@
+These are some notes about ANTLR to re-read in the fall when I forget
+everything I've learned while being in Europe. 
+
+Library Structure. 
+
+-compiled librarys, both static and dynamic located in 
+    /usr/local/lib/antlr4-runtime.{a/so}
+
+-header files located in 
+    /usr/local/include/antlr-runtime/
+
+-auto gen Parsre, Lexer, Visitor, Listener etc files from .g4 grammar file with
+    antlr4 -Dlanguage=Cpp -visitor -o /gen grammar.g4
+
+-by deafult antlr sets up a parse tree (Lite.Parser ) and the associated walk functions
+found in antlr4::tree::
+
+-to do a particular action on a walk, extend the LiteBaseListener class
+
+Listeners are called automatically by the ANTLR-provided walker object. while
+visitors must explicitly invoked. 
+    (Done by walking the parse tree by accessing children of each node and calling visit recursively)
+
+
+
+

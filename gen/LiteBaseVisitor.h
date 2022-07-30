@@ -54,7 +54,5 @@ public:
   virtual std::any visitExprMulDiv(LiteParser::ExprMulDivContext *ctx) override {
     return visitChildren(ctx);
   }
-
-
 };
 

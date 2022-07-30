@@ -8,11 +8,11 @@ RT_STATIC = libantlr4-runtime.a
 RT_SHARED = libantlr4-runtime.so
 
 I_FLAGS = -c -g -o $(OBJ_DIR)/$@ -I $(INCL_RT_DIR)/antlr4-runtime/ -std=c++17 -I $(GEN_DIR)
-L_FLAGS = -g -std=c++17
+L_FLAGS = -g -std=c++17 -Wall
 
 EXEC = main
 OBJS = $(EXEC).o 
-GEN_OBJS = LiteParser.o LiteLexer.o SyntaxAction.o LiteListener.o LiteBaseListener.o
+GEN_OBJS = LiteParser.o LiteLexer.o CustomVisitor.o LiteBaseVisitor.o LiteVisitor.o 
 LIBS = $(patsubst %, $(LINK_RT_DIR)/%, $(RT_STATIC) $(RT_SHARED))
 
 all: $(OBJS) $(GEN_OBJS) $(EXEC)
