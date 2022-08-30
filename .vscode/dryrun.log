@@ -1,0 +1,12 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory '/home/justin/antlrCalc'
+g++ -c -g -o ./obj/main.o -I /usr/local/include/antlr4-runtime/ -std=c++17 -I ./gen main.cpp
+ 
+g++ -c -g -o ./obj/LiteParser.o -I /usr/local/include/antlr4-runtime/ -std=c++17 -I ./gen gen/LiteParser.cpp
+g++ -c -g -o ./obj/LiteLexer.o -I /usr/local/include/antlr4-runtime/ -std=c++17 -I ./gen gen/LiteLexer.cpp
+g++ -c -g -o ./obj/CustomVisitor.o -I /usr/local/include/antlr4-runtime/ -std=c++17 -I ./gen gen/CustomVisitor.cpp
+g++ -c -g -o ./obj/LiteBaseVisitor.o -I /usr/local/include/antlr4-runtime/ -std=c++17 -I ./gen gen/LiteBaseVisitor.cpp
+g++ -c -g -o ./obj/LiteVisitor.o -I /usr/local/include/antlr4-runtime/ -std=c++17 -I ./gen gen/LiteVisitor.cpp
+g++ -g -std=c++17 -Wall  ./obj/main.o  ./obj/LiteParser.o  ./obj/LiteLexer.o  ./obj/CustomVisitor.o  ./obj/LiteBaseVisitor.o  ./obj/LiteVisitor.o  /usr/local/lib/libantlr4-runtime.a  /usr/local/lib/libantlr4-runtime.so -o main 
+make: Leaving directory '/home/justin/antlrCalc'
+ 
